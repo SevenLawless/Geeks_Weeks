@@ -34,3 +34,23 @@ for (let planet of planetsWithMoons) {
 
 
 // ====== Daily Words in the stars
+
+let input = prompt("Enter words separated by commas:");
+let words = input.split(", ");
+
+let maxLength = 0;
+for (let word of words) {
+    if (word.length > maxLength) {
+        maxLength = word.length;
+    }
+}
+
+let topBorder = "*".repeat(maxLength + 4);
+console.log(topBorder);
+
+for (let word of words) {
+    let padding = " ".repeat(maxLength - word.length);
+    console.log(`* ${word}${padding} *`);
+}
+
+console.log(topBorder);
