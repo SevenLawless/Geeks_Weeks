@@ -6,14 +6,15 @@ const shuffleButton = document.getElementById('shuffle-button');
 let userInputs = {};
 
 const stories = [
-    (inputs) => `One day, ${inputs.person} went to ${inputs.place} to find a ${inputs.adjective} ${inputs.noun}. They decided to ${inputs.verb} all day long!`,
-    
-    (inputs) => `${inputs.person} had a dream about a ${inputs.adjective} ${inputs.noun}. In the dream, they had to ${inputs.verb} their way to ${inputs.place}.`,
-    
-    (inputs) => `In ${inputs.place}, there was a ${inputs.adjective} ${inputs.noun}. ${inputs.person} tried to ${inputs.verb} it but failed miserably!`,
-    
-    (inputs) => `The ${inputs.adjective} ${inputs.noun} belonged to ${inputs.person}. They would ${inputs.verb} with it every day at ${inputs.place}.`
+  (inputs) => `One morning, ${inputs.person} found a ${inputs.adjective} ${inputs.noun} waiting on a bench at ${inputs.place}. They decided to ${inputs.verb} together until the pigeons started clapping.`,
+  
+  (inputs) => `${inputs.person} dreamed the ${inputs.noun} at ${inputs.place} could whisper secrets. It spoke in ${inputs.adjective} riddles and taught them how to ${inputs.verb} with a smile.`,
+  
+  (inputs) => `At ${inputs.place}, a ${inputs.adjective} ${inputs.noun} opened a tiny store selling single moments of joy. ${inputs.person} went inside to ${inputs.verb} and left with a pocket full of 7lwa.`,
+  
+  (inputs) => `The ${inputs.adjective} ${inputs.noun} sent ${inputs.person} a postcard asking to ${inputs.verb} at ${inputs.place}. They met, swapped silly stories, and the world felt a little softer.`
 ];
+
 
 let currentStoryIndex = 0;
 
