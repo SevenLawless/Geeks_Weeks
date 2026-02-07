@@ -1,7 +1,10 @@
 // ====== Tell the story
 const form = document.getElementById('libform');
 const storySpan = document.getElementById('story');
-const shuffleButton = document.getElementById('shuffle-button');
+const shuffleButton = document.createElement('button');
+shuffleButton.textContent = 'Shuffle Story';
+shuffleButton.style.display = 'none';  // ✅ Hidden at start
+document.body.appendChild(shuffleButton);  // ✅ Fixed append
 
 let userInputs = {};
 
@@ -21,11 +24,11 @@ let currentStoryIndex = 0;
 form.addEventListener('submit', function(event) {
     event.preventDefault();
     
-    const noun = document.getElementById('noun').value;
-    const adjective = document.getElementById('adjective').value;
-    const person = document.getElementById('person').value;
-    const verb = document.getElementById('verb').value;
-    const place = document.getElementById('place').value;
+    const noun = document.getElementById('noun').value.trim();
+    const adjective = document.getElementById('adjective').value.trim();
+    const person = document.getElementById('person').value.trim();
+    const verb = document.getElementById('verb').value.trim();
+    const place = document.getElementById('place').value.trim();
     
     if (noun === '' || adjective === '' || person === '' || verb === '' || place === '') {
         alert('Please fill in all fields!');
@@ -53,8 +56,12 @@ shuffleButton.addEventListener('click', function() {
     storySpan.textContent = newStory;
 });
 
-
-
 // ====== Letters
 
 
+const input = document.getElementById('letterInput');
+
+//regex
+input.addEventListener('input', function() {
+    input.value = input.value.replace(/[^a-zA-Z]/g, '');
+});
