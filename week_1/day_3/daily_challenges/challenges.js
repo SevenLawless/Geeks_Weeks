@@ -3,8 +3,8 @@ const form = document.getElementById('libform');
 const storySpan = document.getElementById('story');
 const shuffleButton = document.createElement('button');
 shuffleButton.textContent = 'Shuffle Story';
-shuffleButton.style.display = 'none';  // ✅ Hidden at start
-document.body.appendChild(shuffleButton);  // ✅ Fixed append
+shuffleButton.style.display = 'none';
+document.body.appendChild(shuffleButton);
 
 let userInputs = {};
 
