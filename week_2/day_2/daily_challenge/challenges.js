@@ -31,15 +31,12 @@ const gameInfo = [
 const usernames = [];
 const winners = [];
 gameInfo.forEach(player => {
-    userToPush = player.username + "!";
+    const  userToPush = player.username + "!";
     usernames.push(userToPush);
 })
 
 gameInfo.forEach(player => {
-    if (player.score > 5) {
-        userToPush2 = player.username + "!";
-        winners.push(userToPush2);
-    }
+    if (player.score > 5) winners.push(player.username);
 })
 console.log("users : " + usernames);
 console.log("winners : " + winners);
