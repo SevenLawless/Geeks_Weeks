@@ -1,0 +1,81 @@
+//----------------------------------------------ex1----------------------------
+
+const gameInfo = [
+ {
+   username: "john",
+   team: "red",
+   score: 5,
+   items: ["ball", "book", "pen"]
+ },
+ {
+   username: "becky",
+   team: "blue",
+   score: 10,
+   items: ["tape", "backpack", "pen"]
+ },
+ {
+   username: "susy",
+   team: "red",
+   score: 55,
+   items: ["ball", "eraser", "pen"]
+ },
+ {
+   username: "tyson",
+   team: "green",
+   score: 1,
+   items: ["book", "pen"]
+ },
+];
+
+
+const usernames = [];
+const winners = [];
+gameInfo.forEach(player => {
+    userToPush = player.username + "!";
+    usernames.push(userToPush);
+})
+
+gameInfo.forEach(player => {
+    if (player.score > 5) {
+        userToPush2 = player.username + "!";
+        winners.push(userToPush2);
+    }
+})
+console.log("users : " + usernames);
+console.log("winners : " + winners);
+
+const totscore = gameInfo.reduce((total, player) => {
+    return total + player.score;
+}, 0);
+
+console.log("total score : " + totscore);
+
+
+
+
+//----------------------------------------------ex2----------------------------
+const inventory = [
+  { id: 1, car_make: "Lincoln", car_model: "Navigator", car_year: 2009 },
+  { id: 2, car_make: "Mazda", car_model: "Miata MX-5", car_year: 2001 },
+  { id: 3, car_make: "Honda", car_model: "Accord", car_year: 1983 },
+  { id: 4, car_make: "Land Rover", car_model: "Defender Ice Edition", car_year: 2010 },
+  { id: 5, car_make: "Honda", car_model: "Accord", car_year: 1995 },
+];
+
+
+
+const getCarHonda = (carInventory) => {
+    const honda = carInventory.find(car => car.car_make === 'Honda');
+
+    return `This is a ${honda.car_make} ${honda.car_model} from ${honda.car_year}`
+};
+
+console.log(getCarHonda(inventory));
+
+
+
+const sortCarInventoryByYear = (carInventory) => {
+    return [...carInventory].sort((a, b) => a.car_year - b.car_year);
+};
+
+console.log(sortCarInventoryByYear(inventory));
