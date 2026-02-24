@@ -1,24 +1,5 @@
-//------------ex1-----------------
+const AnaThingy = (str1, str2) => {
+    const clean = (str) => str.toLowerCase().replace(/ /g, "").split("").sort();
 
-
-
-//------------ex2-----------------
-
-
-
-//------------ex3-----------------
-
-
-
-
-//------------ex4-----------------
-
-
-
-//------------ex5-----------------
-
-
-
-//------------ex6-----------------
-
-
+    return JSON.stringify(clean(str1)) === JSON.stringify(clean(str2))
+}
