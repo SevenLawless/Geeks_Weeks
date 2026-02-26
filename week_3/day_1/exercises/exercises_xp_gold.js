@@ -12,4 +12,4 @@ Promise.all([promise1, promise2, promise3])
 
 // 2
 
-output is : [2, 4, 6]
+// output is : [2, 4, 6]
