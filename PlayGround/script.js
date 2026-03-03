@@ -1,36 +1,52 @@
 // ---------------------------------day 1------------------------------
 // ---------------------------------xp------------------------------
-//1
-// const compareToTen = (num) => {
-//     return new Promise((resolve, reject) => {
-//         if (num <= 10){
-//             resolve("num is right");
-//         }else {
-//             reject("num is not right")
-//         }
-//     })
+
+
+
+// XP Exercise 1
+// async function getGifs() {
+//   try {
+//     const response = await fetch("https://api.giphy.com/v1/gifs/search?q=sun&GgLlK8mtFldFZI3u54RCaBQ44N7dVsKW")
+//     if (!response.ok) throw new Error("Something went wrong")
+//     const data = await response.json()
+//     console.log(data.data[0].images.original.url)
+//   } catch (error) {
+//     console.log("Error:", error)
+//   }
 // }
+// getGifs()
 
-// compareToTen(8)
-//     .then(result => console.log(result))
-//     .catch(error => console.log(error))
+// XP Exercise 2
+// async function getGifs() {
+//   try {
+//     const response = await fetch("https://api.giphy.com/v1/gifs/search?q=sun&offset=2&rating=r&limit=10&api_key=GgLlK8mtFldFZI3u54RCaBQ44N7dVsKW")
+//     if (!response.ok) throw new Error("Something went wrong")
+//     const data = await response.json()
+//     for (let i=0;i<10;i++) {
+//         const img = document.createElement("img")
+//         img.src = data.data[i].images.original.url
+//         document.body.appendChild(img)
+//     }
+//   } catch (error) {
+//     console.log("Error:", error)
+//   }
+// }
+// getGifs()
 
-// compareToTen(15)
-//     .then(result => console.log(result))
-//     .catch(error => console.log(error))
 
-// 2
-// const awdi = new Promise((resolve, reject) => {
-//     setTimeout(()=> {
-//         resolve("im resolved");
-//     }, 4000)
-// })
 
-// awdi.then(result => console.log(result))
-
-// 3 
-// Promise.resolve(3).then(result => console.log(result));
-// Promise.reject("Boo!").catch(error => console.log(error));
+// XP Exercise 3
+// async function ShipsNShit() {
+//   try {
+//     const response = await fetch("https://www.swapi.tech/api/starships/9/")
+//     if (!response.ok) throw new Error("Something went wrong")
+//     const objectStarWars = await response.json()
+//     console.log(objectStarWars.result)
+//   } catch (error) {
+//     console.log("Error:", error)
+//   }
+// }
+// ShipsNShit()
 
 
 
@@ -38,98 +54,27 @@
 
 
 // ---------------------------------xp gold------------------------------
+// XP Gold Exercise 1
+// async function getGifs() {
+//   try {
+//     const response = await fetch("https://api.giphy.com/v1/gifs/search?q=sun&api_key=GgLlK8mtFldFZI3u54RCaBQ44N7dVsKW")
+//     if (!response.ok) throw new Error("Something went wrong")
+//     const data = await response.json()
+//     const img = document.createElement("img")
+//     img.src = data.data[0].images.original.url
+//     document.body.appendChild(img)
+//   } catch (error) {
+//     console.log("Error:", error)
+//   }
+// }
+// getGifs()
 
-// 1
-// const promise1 = Promise.resolve(3)
-// const promise2 = 42
-// const promise3 = new Promise((resolve, reject) => {
-//     setTimeout(resolve, 3000, 'foo')  
-// })
-
-// Promise.all([promise1, promise2, promise3])
-//     .then(results => console.log(results))
-
-
-
-// 2
-
-// output is : [2, 4, 6]
 
 // ---------------------------------daily challenge------------------------------
-const morse = `{
-  "0": "-----",
-  "1": ".----",
-  "2": "..---",
-  "3": "...--",
-  "4": "....-",
-  "5": ".....",
-  "6": "-....",
-  "7": "--...",
-  "8": "---..",
-  "9": "----.",
-  "a": ".-",
-  "b": "-...",
-  "c": "-.-.",
-  "d": "-..",
-  "e": ".",
-  "f": "..-.",
-  "g": "--.",
-  "h": "....",
-  "i": "..",
-  "j": ".---",
-  "k": "-.-",
-  "l": ".-..",
-  "m": "--",
-  "n": "-.",
-  "o": "---",
-  "p": ".--.",
-  "q": "--.-",
-  "r": ".-.",
-  "s": "...",
-  "t": "-",
-  "u": "..-",
-  "v": "...-",
-  "w": ".--",
-  "x": "-..-",
-  "y": "-.--",
-  "z": "--..",
-  ".": ".-.-.-",
-  ",": "--..--",
-  "?": "..--..",
-  "!": "-.-.--",
-  "-": "-....-",
-  "/": "-..-.",
-  "@": ".--.-.",
-  "(": "-.--.",
-  ")": "-.--.-"
-}`
 
 
-const toJs = () => {
-    return new Promise((resolve, reject) => {
-        const morseObject = JSON.parse(morse)
-
-        if(Object.keys(morseObj).length === 0) {
-            reject("morse object is empty!")
-        } else {
-            resolve(morseObj)
-        }
-    })
-}
-
-const toMorse = (morseObj) => {
-    return new Promise((resolve, reject) => {
-        const word = prompt("gimme a word")
-        const letters = word.split("")
-        const morsed = letters.map(letter => morseObj[letter])
-
-        if(morsed.includes(undefined)) {
-            reject("character doesn't exist!")
-        } else {
-            resolve(morsed)
-        }
-    })
-}
 
 // ---------------------------------xp ninja------------------------------
+
+
 
