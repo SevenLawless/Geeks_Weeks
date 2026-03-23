@@ -1,173 +1,133 @@
 //------------ex1-----------------
-const products = [{
-    name: "asdasd",
-    price: 123,
-    category: "asjdhnasd",
-}, 
-{
-    name: "laptop",
-    price: 252,
-    category: "electros",
-}, 
-{
-    name: "phone",
-    price: 30,
-    category: "electros",
-}, 
-{
-    name: "table",
-    price: 3,
-    category: "furniture",
-}];
+const inventory = [
+  { name: "asdasd", price: 123, category: "asjdhnasd" },
+  { name: "laptop", price: 252, category: "electros" },
+  { name: "phone", price: 30, category: "electros" },
+  { name: "table", price: 3, category: "furniture" },
+];
 
-const products = require('app.js')
+// When using a separate module: const catalog = require("./app.js");
 
-function findProduct(productName) {
-    const product = products.find(p => p.name === productName)
-    console.log(product) 
+function findProduct(label) {
+  const match = inventory.find((row) => row.name === label);
+  console.log(match);
 }
 
-
-findProduct("laptop")
-findProduct("table")
-findProduct("phone")
-
+findProduct("laptop");
+findProduct("table");
+findProduct("phone");
 
 //------------ex2-----------------
 
-export const people = [
-    {name: "asdd", age: 12, location: "asd"},
-    {name: "asdd", age: 12, location: "asd"},
-    {name: "asdd", age: 12, location: "asd"}
-]
-
+export const roster = [
+  { name: "asdd", age: 12, location: "asd" },
+  { name: "asdd", age: 12, location: "asd" },
+  { name: "asdd", age: 12, location: "asd" },
+];
 
 // other file
-import { people } from "./???.js" // from wherever the file is
+// import { roster } from "./people.js";
 
-function averageAge(arr) {
-    const total = arr.reduce((sum, person) => sum + person.age, 0)
-    console.log(total / arr.length)
+function averageAge(records) {
+  const sumYears = records.reduce((acc, row) => acc + row.age, 0);
+  console.log(sumYears / records.length);
 }
 
-averageAge(people)
-
-
+averageAge(roster);
 
 //------------ex3-----------------
 
+const fs = require("fs");
 
-const fs = require("fs")
-
-function readFile(path) {
-    fs.readFile(path, "utf8", (err, data) => {
-        if (err) return console.log(err)
-        console.log(data)
-    })
+function loadTextFile(filePath) {
+  fs.readFile(filePath, "utf8", (readErr, payload) => {
+    if (readErr) return console.log(readErr);
+    console.log(payload);
+  });
 }
 
-function writeFile(path, content) {
-    fs.writeFile(path, content, (err) => {
-        if (err) return console.log(err)
-        console.log("File done")
-    })
+function saveTextFile(filePath, payload) {
+  fs.writeFile(filePath, payload, (writeErr) => {
+    if (writeErr) return console.log(writeErr);
+    console.log("File done");
+  });
 }
 
+module.exports = { loadTextFile, saveTextFile };
 
-module.exports = { readFile, writeFile }
-
-// other file 
-
-const { readFile, writeFile } = require("./???.js") // from wherever the file is
-
-writeFile("texto.txt", "message")
-writeFile("texto.txt", "message")
-readFile("texto.txt")
-
-
-
+// other file
+// const { loadTextFile, saveTextFile } = require("./io.js");
+// saveTextFile("texto.txt", "message");
+// loadTextFile("texto.txt");
 
 //------------ex4-----------------
 
+export class Checklist {
+  constructor() {
+    this.items = [];
+  }
 
+  addItem(label) {
+    this.items.push({ label, completed: false });
+  }
 
-export class TodoList {
-    constructor() {
-        this.todos = []
-    }
+  markDone(label) {
+    const row = this.items.find((x) => x.label === label);
+    if (row) row.completed = true;
+  }
 
-    addTask(task) {
-        this.todos.push({ task, completed: false })
-    }
-
-    markCompleted(task) {
-        const todo = this.todos.find(t => t.task === task)
-        if (todo) todo.completed = true
-    }
-
-    listAll() {
-        console.log(this.todos)
-    }
+  printAll() {
+    console.log(this.items);
+  }
 }
 
-// other file 
-
-import { TodoList } from "???.js" // from wherever the file is
-
-const list = new TodoList()
-list.addTask("do somethin 1")
-list.addTask("do somethin 2")
-list.addTask("do somethin 3")
-list.markCompleted("do somethin 1")
-list.listAll()
-
+// other file
+// import { Checklist } from "./todos.js";
+// const checklist = new Checklist();
+// checklist.addItem("task 1");
+// checklist.markDone("task 1");
+// checklist.printAll();
 
 //------------ex5-----------------
 
-const _ = require("lodash")
+const _ = require("lodash");
 
-function add(a, b) { return a + b}
-function multiply(a, b) { return a * b}
+function sumPair(x, y) {
+  return x + y;
+}
+function productPair(x, y) {
+  return x * y;
+}
 
-const numbers = [1, 2, 3, 4, 5]
-const doubled = _.map(numbers, n => n * 2)
+const values = [1, 2, 3, 4, 5];
+const scaled = _.map(values, (n) => n * 2);
 
-console.log("doubled: ", doubled)
-console.log("add: ", add(5, 3))
-console.log("multiply: ", multiply(5, 3))
+console.log("scaled: ", scaled);
+console.log("sumPair: ", sumPair(5, 3));
+console.log("productPair: ", productPair(5, 3));
 
-module.exports = { add, multiply }
-
+module.exports = { sumPair, productPair };
 
 //------------ex6-----------------
 
+const chalk = require("chalk");
 
-const chalk = require("chalk")
-
-console.log(chalk.blue("message"))
-console.log(chalk.red.bold("message"))
-console.log(chalk.green("message"))
-
-
+console.log(chalk.blue("message"));
+console.log(chalk.red.bold("message"));
+console.log(chalk.green("message"));
 
 //------------ex7-----------------
 
+fs.readFile("texts.txt", "utf8", (readErr, payload) => {
+  if (readErr) return console.log(readErr);
+  fs.writeFile("destext.txt", payload, (writeErr) => {
+    if (writeErr) return console.log(writeErr);
+    console.log("done");
+  });
+});
 
-const fs = require("fs")
-
-fs.readFile("texts.txt", "utf8", (err, data) => {
-    if (err) return console.log(err)
-    fs.writeFile("destext.txt", data, (err) => {
-        if (err) return console.log(err)
-        console.log("done")
-    })
-})
-
-// other file 
-
-const fs = require("fs")
-
-fs.readdir(".", (err, files) => {
-    if (err) return console.log(err)
-    console.log("files : ", files)
-})
+// other file — reuse fs from ex3 in a real split, or: const fs = require("fs");
+fs.readdir(".", (readErr, names) => {
+  if (readErr) return console.log(readErr);
+  console.log("files : ", names);
+});
